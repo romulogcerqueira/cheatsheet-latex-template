@@ -1,135 +1,296 @@
 \documentclass[9pt]{innovativeinnovation-cheatsheet}
 
-\cheatsheettitle{Example Cheat Sheet}
+\cheatsheettitle{Autoproj Cheat Sheet v2.0}
 
 \begin{document}
 
 \begin{multicols*}{3}
 
-\cheatsheetsection{Lorem ipsum dolor sit amet}
+\cheatsheetsection{Installing}
 
-\begin{enumerate}
-  \item Eu \texttt{feugiat pretium --nibh}  ipsum consequat nisl vel pretium
-        lectus
-  \item Diam quis enim lobortis scelerisque \texttt{.fermentum}
-  \item A arcu cursus vitae congue mauris rhoncus aenean. Ut tellus elementum
-        sagittis vitae
-\end{enumerate}
-
-\cheatsheetsection{Consectetur adipiscing elit}
-
-Magna etiam tempor orci eu lobortis. Integer malesuada nunc vel risus. Id
-venenatis a condimentum vitae. Et netus et malesuada:
-
+Install Autoproj.
 \begin{lstlisting}
-sus in
-dictumst quisque --sagittis-purus
+$ ruby autoproj_install OPTIONS
 \end{lstlisting}
 
-\cheatsheetsection{Sed do eiusmod tempor incididunt ut labore}
-
-Ut tellus elementum sagittis vitae et leo duis ut diam. Faucibus purus in
-massa tempor.
-
-Lectus nulla at volutpat diam:
-
-\begin{enumerate}
-  \item Quam viverra orci sagittis eu volutpat odio facilisis mauris sit.
-  \item In hac habitasse platea dictumst vestibulum rhoncus:\\
-    \texttt{est pellentesque --elit}
-\end{enumerate}
-
-\cheatsheetsection{Ut enim blandit volutpat maecenas}
-
-Venenatis tellus in metus vulputate. Sit amet facilisis magna etiam tempor
-orci eu lobortis elementum:
-
+Bootstrap a project.
 \begin{lstlisting}
-quam adipiscing
-quam vitae
+$ autoproj bootstrap VCS_TYPE VCS_URL VCS_OPTIONS
 \end{lstlisting}
 
-\cheatsheetsection{Tristique nulla aliquet enim tortor}
+\cheatsheetsection{Basics}
 
-Augue eget arcu dictum varius duis at consectetur lorem donec. Semper quis
-lectus nulla at volutpat diam ut venenatis tellus:
-
-\begin{enumerate}
-  \item Nulla aliquet porttitor lacus luctus accumsan. Volutpat maecenas
-        volutpat blandit aliquam etiam erat velit scelerisque.
-  \item Elit sed vulputate mi sit amet mauris commodo.
-  \item Ac felis donec et odio pellentesque diam volutpat. Quam viverra orci
-        sagittis eu volutpat odio facilisis mauris sit.
-\end{enumerate}
-
-\cheatsheetsection{In hac habitasse platea dictumst}
-
-Tristique sollicitudin nibh sit amet commodo nulla. Dui ut ornare lectus
-sit amet:
-
-\begin{enumerate}
-  \item Elementum sagittis vitae et leo duis ut diam.
-  \item Pulvinar etiam non quam lacus suspendisse faucibus interdum posuere
-        lorem.
-\end{enumerate}
-
-Aliquam purus sit amet luctus venenatis lectus:
-
+Source the Autoproj environment.
 \begin{lstlisting}
-quam adipiscing vitae
+$ source env.sh
 \end{lstlisting}
 
-\cheatsheetsection{Ipsum nunc aliquet}
-
- Tempus egestas sed sed risus pretium quam vulputate. Sed lectus vestibulum
- mattis ullamcorper. Quis ipsum suspendisse ultrices gravida.
-
-Volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in:
-
-\begin{enumerate}
-  \item Eget sit amet tellus cras adipiscing enim.
-  \item Eu scelerisque felis
-        \href{mailto://example@example.com}{example@example.com}
-\end{enumerate}
-
-\cheatsheetsection{Enim sed faucibus}
-
-At ultrices mi tempus imperdiet nulla malesuada. Sit amet consectetur
-adipiscing elit pellentesque habitant. Phasellus vestibulum lorem sed risus
-ultricies tristique nulla aliquet.
-
+Change directories between packages.
 \begin{lstlisting}
-cras semper auctor
+$ acd [PACKAGE]
 \end{lstlisting}
 
-\cheatsheetsection{Adipiscing tristique risus nec feugiat}
-
-Neque sodales ut etiam sit amet nisl purus. Ornare lectus sit amet est
-placerat in. Consectetur purus ut faucibus pulvinar elementum integer enim
-neque volutpat:
-
+List the available commands.
 \begin{lstlisting}
-amet porttitor eget dolor
+$ autoproj help
 \end{lstlisting}
 
-\cheatsheetsection{Sagittis id consectetur purus}
+\cheatsheetsection{Updating}
 
-Non consectetur a erat nam at lectus urna.
+Update the workspace installation.
+\begin{lstlisting}
+$ autoproj update --all
+$ aup --all
+\end{lstlisting}
 
-\begin{enumerate}
-  \item Fringilla phasellus faucibus scelerisque eleifend donec pretium
-        vulputate sapien.
-  \item Non enim praesent elementum facilisis leo.
-  \item Risus quis varius quam quisque. Sed blandit libero volutpat sed cras
-        \texttt{--ornare-arcu}
-\end{enumerate}
+Update packages.
+\begin{lstlisting}
+$ autoproj update [PACKAGES]
+$ aup [PACKAGE]
+\end{lstlisting}
 
-Dolor sed viverra ipsum nunc aliquet bibendum. Senectus et netus et malesuada
-fames ac turpis egestas. Pellentesque id nibh tortor id aliquet.
+Update packages and continues if errors occurs.
+\begin{lstlisting}
+$ autoproj update -k [PACKAGES]
+$ aup -k [PACKAGES]
+\end{lstlisting}
+
+Checkout packages, without updating the existing ones.
+\begin{lstlisting}
+$ autoproj update -c [PACKAGES]
+$ aup -c [PACKAGES]
+\end{lstlisting}
+
+\cheatsheetsection{Building}
+
+Build the workspace installation.
+\begin{lstlisting}
+$ autoproj build --all
+$ amake -all
+\end{lstlisting}
+
+Build packages.
+\begin{lstlisting}
+$ autoproj build [PACKAGES]
+$ amake [PACKAGES]
+\end{lstlisting}
+
+Build packages and continues if errors occurs.
+\begin{lstlisting}
+$ autoproj build -k [PACKAGES]
+$ amake -k [PACKAGES]
+\end{lstlisting}
+
+Rebuild packages.
+\begin{lstlisting}
+$ autoproj build --rebuild [PACKAGES]
+$ amake --rebuild [PACKAGES]
+\end{lstlisting}
+
+Install packages related to osdeps.
+\begin{lstlisting}
+$ autoproj osdeps [PACKAGES]
+\end{lstlisting}
+
+\cheatsheetsection{Configuring}
+
+Re-ask all configuration options.
+\begin{lstlisting}
+$ autoproj --reconfigure
+\end{lstlisting}
+
+Switch configurations.
+\begin{lstlisting}
+$ autoproj switch-config branch=<branch_name>
+\end{lstlisting}
+
+Switch manifest.
+\begin{lstlisting}
+$ autoproj manifest <manifest_name>
+\end{lstlisting}
+
+\cheatsheetsection{Documenting}
+
+Generate documentation (if \verb|doc/| subfolder is present in the package directory).
+\begin{lstlisting}
+$ autoproj doc
+\end{lstlisting}
+
+\cheatsheetsection{Logging}
+
+List and allow selecting logs for a certain package.
+\begin{lstlisting}
+$ alog [PACKAGE]
+\end{lstlisting}
+
+\cheatsheetsection{Testing}
+
+List packages with test suites and indicate if they are enabled.
+\begin{lstlisting}
+$ autoproj test list
+\end{lstlisting}
+
+Enable test suite.
+\begin{lstlisting}
+$ autoproj test enable [PACKAGES]
+\end{lstlisting}
+
+Disable test suite.
+\begin{lstlisting}
+$ autoproj test disable [PACKAGES]
+\end{lstlisting}
+
+Run the test suite.
+\begin{lstlisting}
+$ autoproj test exec [PACKAGES]
+\end{lstlisting}
+
+\cheatsheetsection{Monitoring}
+
+Show information about packages. 
+\begin{lstlisting}
+$ autoproj show [PACKAGES]
+\end{lstlisting}
+
+Compare synchronization status of workspace w.r.t. the source repositories.
+\begin{lstlisting}
+$ autoproj status [PACKAGES]
+\end{lstlisting}
+
+\cheatsheetsection{Snapshots}
+
+Output the overrides of the workspace's current state.
+\begin{lstlisting}
+$ autoproj versions
+\end{lstlisting}
+
+Output the overrides of the workspace's current state, without checking if the repo HEAD matches the remotes.
+\begin{lstlisting}
+$ autoproj versions --local
+\end{lstlisting}
+
+Save the overrides output as YAML file.
+\begin{lstlisting}
+$ autoproj versions --local --save [FILENAME]
+\end{lstlisting}
+
+Commit the versions file, tag, and commit the buildconf.
+\begin{lstlisting}
+$ autoproj tag [TAG_NAME] [PACKAGES]
+\end{lstlisting}
+
+\cheatsheetsection{Overridings}
+
+Override source in \verb|autoproj/overrides.d/file.yml|.
+\begin{lstlisting}
+- package_name:
+  branch: <target_branch>
+  commit: <target_commit>
+  url: <target_url>
+  tag: <target_tag>
+\end{lstlisting}
+
+\cheatsheetsection{Adding packages}
+
+Add packages to a package set in \\
+\verb|autoproj/remotes/package_set/packages.autobuild|.
+
+\begin{lstlisting}
+cmake_package "package_name"
+import_package "package_name"
+python_package "package_name"
+ruby_package "package_name"
+ament_cmake_package "package_name"
+ament_python_package "package_name"
+\end{lstlisting}
+
+Define package sources in a package set in \\
+\verb|autoproj/remotes/package_set/source.yml|.
+
+\begin{lstlisting}
+version_control:
+  - package_name:
+    type: <target_type>
+    gitkraken: <target_git_repository>
+    url: <target_url>
+    branch: <target_branch>
+    commit: <target_commit>
+    tag: <target_tag>
+    private: <true/false>
+\end{lstlisting}
+
+Define dependencies between packages in \\
+\verb|package/manifest.yml|.
+
+\begin{lstlisting}
+<package>
+  ...
+  <build_depend package="package_name" />
+  <depend package="package_name" />
+  <test_depend package="package_name" />
+  ...
+</package>
+\end{lstlisting}
+
+\cheatsheetsection{Adding osdeps}
+
+Define the osdeps according to the package manager in \\
+\verb|autoproj/remotes/package_set/package.osdeps|.
+
+\begin{lstlisting}
+package_name:
+  ubuntu,debian: name_of_apt_package
+  gem: name_of_ruby_package
+  pip: name_of_python_package
+  default: name_of_apt_package
+\end{lstlisting}
+
+\cheatsheetsection{Adding osrepos}
+
+Set OS-specific package repositories  in \\
+\verb|autoproj/remotes/package_set/package.osrepos|.
+
+\begin{lstlisting}
+- ubuntu:
+  - jammy,focal:
+  - default:
+    - type: repo
+      repo: <target_repo>
+    - type: key
+      url: <target_url>
+      id: <public_key_id>
+\end{lstlisting}
+
+\cheatsheetsection{Ignoring packages}
+
+Ignore packages from installation in \verb|autoproj/manifest|.
+\begin{lstlisting}
+exclude_packages:
+  - package_name
+ignore_packages:
+  - package_name
+\end{lstlisting}
+
+\cheatsheetsection{Using plugins}
+
+List installed plugins.
+\begin{lstlisting}
+$ autoproj plugin list
+\end{lstlisting}
+
+Install a plugin.
+\begin{lstlisting}
+$ autoproj plugin install PLUGIN_NAME
+\end{lstlisting}
+
+Remove a plugin.
+\begin{lstlisting}
+$ autoproj plugin remove PLUGIN_NAME
+\end{lstlisting}
 
 \vfill
 
-\cheatsheetfooter{Innovative Innovation}{https://github.com/innovativeinnovation}
+\cheatsheetfooter{Cheat Sheet created by Kraken Robotics.\\ \\ Autoproj v2.17.0}{https://github.com/rock-core/autoproj}
 
 \end{multicols*}
 
